@@ -3,7 +3,7 @@ import assert from 'assert'
 import { greet, isOld } from './index'
 
 describe('ts tests', () => {
-  it('get greeting', () => {
+  it("get greeting", () => {
     const birthYear = 2000
     const name = 'Daniel'
 
@@ -11,7 +11,7 @@ describe('ts tests', () => {
 
     assert.strictEqual(result, 'Hello Daniel, you are 24 years old')
   })
-  it('returns true if age is above or equal to 35', () => {
+  it("returns true if age is above or equal to 35", () => {
     const is34Old = isOld(34)
     const is35Old = isOld(35)
     const is36Old = isOld(36)
@@ -19,5 +19,19 @@ describe('ts tests', () => {
     assert.strictEqual(is34Old, false)
     assert.strictEqual(is35Old, true)
     assert.strictEqual(is36Old, true)
+  })
+  it("fun with variables", () => {
+    let name: string = "Marcus"
+    let nameImplicit = "Marcus"
+    let nameImplicit2 = name
+
+    const cool: boolean = true
+    const birthYear = 1972
+
+    assert.strictEqual(typeof cool, "boolean")
+    assert.strictEqual(typeof birthYear, "number")
+    assert.strictEqual(typeof name, "string")
+    assert.strictEqual(typeof nameImplicit, "string")
+    assert.strictEqual(typeof nameImplicit2, "string")
   })
 })

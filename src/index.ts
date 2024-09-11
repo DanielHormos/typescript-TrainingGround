@@ -3,7 +3,7 @@ function greet(name: string, birthYear: number): string {
   return `Hello ${name}, you are ${age} years old`;
 }
 
-function isOld(age: number): boolean {
+function isOld(age: number) {
         return age >= 35
 }
 
