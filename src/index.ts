@@ -17,7 +17,7 @@ function sumEven(arr: number[]): number{
     .reduce((accumulator, current) => accumulator + current/*you can add ", 0" for initial value */ )
 }
 
-function getPersonStreetNo(p: Person): number{
+function getPersonStreetNo(p: Person){
     return p.address.streetNo;
 }
 
