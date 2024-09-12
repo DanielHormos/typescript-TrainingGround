@@ -1,8 +1,8 @@
 import 'mocha'
 import assert from 'assert'
-import { greet, isOld, countOdd, sumEven, getPersonNameString,
-     Person, getPersonStreetNo, PersonClass, EmployeeClass,
-     IPerson, printThis, optionallyAdd, greetPeople} from './index'
+import { greet, isOldPerson, countOdd, sumEven, getPersonNameString,
+     Person, Address, getPersonStreetNo, PersonClass, EmployeeClass,
+     IPerson, printThis, optionallyAdd, greetPeople, addToStart, Wrapper} from './index'
 import { count } from 'console'
 
 describe('ts tests', () => {
@@ -15,9 +15,9 @@ describe('ts tests', () => {
     assert.strictEqual(result, 'Hello Daniel, you are 24 years old')
   })
   it("returns true if age is above or equal to 35", () => {
-    const is34Old = isOld(34)
-    const is35Old = isOld(35)
-    const is36Old = isOld(36)
+    const is34Old = isOldPerson(34)
+    const is35Old = isOldPerson(35)
+    const is36Old = isOldPerson(36)
 
     assert.strictEqual(is34Old, false)
     assert.strictEqual(is35Old, true)
@@ -122,5 +122,50 @@ describe('ts tests', () => {
     assert.strictEqual(greeting3, "Hello Marcus and Dasha")
     assert.strictEqual(greeting4, "Hello Marcus and Dasha and David")
     assert.strictEqual(greeting5, "Hello Marcus and Dasha and David and Julia and Wietse and Lucas")
+  })
+  it("add to list", () => {
+    const listOfPeople: IPerson[] = [{ name: "Marcus", birthYear: 1972}]
+    const listOfAddresses: Address[] = [
+        {street: "Strålgatan", streetNo: 23, city: "Stockhjolm"},
+        {street: "SchraeschazschStrasse", streetNo: 2, city: "Amsterdam"}
+    ]
+
+    const numberOfPeople = addToStart<IPerson>(listOfPeople, {
+        name: "David",
+        birthYear: 1975
+    })
+
+    const numberOfAddresses = addToStart<Address>(listOfAddresses, {
+        street: "Champs Elysee",
+        streetNo: 1,
+        city: "Paris"
+    })
+
+    assert.strictEqual(numberOfPeople[0].name, "David")
+    assert.strictEqual(numberOfAddresses[0].city, "Paris")
+  })
+  it("wrapper for addresses", () => {
+    const listOfAddresses: Address[] = [
+        {street: "Strålgatan", streetNo: 23, city: "Stockholm"},
+        {street: "SchraeschazschStrasse", streetNo: 2, city: "Amsterdam"},
+        {street: "Champs Elysee", streetNo: 1, city: "Paris"}
+    ]
+
+    const list = new Wrapper<Address>(listOfAddresses)
+
+    assert.strictEqual(list.getFirst().city, "Stockholm")
+    assert.strictEqual(list.getLast().city, "Paris")
+  })
+  it("wrapper for IPerson", () => {
+    const listOfPeople: IPerson[] = [
+        {name: "Daniel", birthYear: 2000},
+        {name: "Jean", birthYear: 2000},
+        {name: "Ali", birthYear: 1999}
+    ]
+
+    const list = new Wrapper<IPerson>(listOfPeople)
+
+    assert.strictEqual(list.getFirst().name, "Daniel")
+    assert.strictEqual(list.getLast().birthYear, 1999)
   })
 })

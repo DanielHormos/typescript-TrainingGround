@@ -1,3 +1,5 @@
+import { link } from "fs";
+
 const greet = (name: string, birthYear: number) => {
   const age = new Date().getFullYear() - birthYear;
   return `Hello ${name}, you are ${age} years old`;
@@ -39,6 +41,26 @@ const optionallyAdd = (
         return num1 + num2 + num3 + num4 + num5
     }
 
+const addToStart = <T>(list: T[], itemToAdd: T): T[] => {
+    return [itemToAdd, ...list]
+}
+
+class Wrapper<T> {
+    private list: T[]
+
+    constructor(list: T[]){
+        this.list = list
+    }
+
+    public getFirst(): T {
+        return this.list[0]
+    }
+
+    public getLast(): T{
+        return this.list[this.list.length-1]
+    }
+}
+
 type Address = {
     street: string
     streetNo: number
@@ -74,7 +96,7 @@ interface IPerson{
     birthYear: number
 }
 
+export {isOld as isOldPerson}
 
-
-export { greet , isOld, countOdd, sumEven, getPersonStreetNo, getPersonNameString, printThis, optionallyAdd, greetPeople, 
+export { greet, countOdd, sumEven, getPersonStreetNo, getPersonNameString, printThis, optionallyAdd, greetPeople, addToStart, Wrapper,
     Address, Person, PersonClass, EmployeeClass, IPerson};
