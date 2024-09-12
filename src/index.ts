@@ -3,6 +3,10 @@ const greet = (name: string, birthYear: number) => {
   return `Hello ${name}, you are ${age} years old`;
 }
 
+const greetPeople = (greeting: string, ...names: string[]) => {
+    return `${greeting} ${names.join(" and ")}`.trim()
+}
+
 const isOld = (age: number) => age >= 35
 
 const countOdd = (arr: number[]) => arr.filter((num) => num % 2 !== 0).length
@@ -25,6 +29,15 @@ const printThis = (p: Person | undefined | null) => {
     }
     return p.name
 }
+
+const optionallyAdd = (
+    num1: number, 
+    num2: number, 
+    num3: number = 0, 
+    num4: number = 0, 
+    num5: number = 0) => {
+        return num1 + num2 + num3 + num4 + num5
+    }
 
 type Address = {
     street: string
@@ -63,5 +76,5 @@ interface IPerson{
 
 
 
-export { greet , isOld, countOdd, sumEven, getPersonStreetNo, getPersonNameString, printThis, 
+export { greet , isOld, countOdd, sumEven, getPersonStreetNo, getPersonNameString, printThis, optionallyAdd, greetPeople, 
     Address, Person, PersonClass, EmployeeClass, IPerson};
