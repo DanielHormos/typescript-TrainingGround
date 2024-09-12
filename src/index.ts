@@ -13,7 +13,7 @@ function countOdd(arr: number[]): number{
 
 function sumEven(arr: number[]): number{
     return arr
-    .filter((num) => num % 2 === 0)
-    .reduce((sum, curr) => sum + curr, 0)
+    .filter((num) => num % 2 == 0)
+    .reduce((accumulator, current) => accumulator + current/*you can add ", 0" for initial value */ )
 }
 export { greet , isOld, countOdd, sumEven};
