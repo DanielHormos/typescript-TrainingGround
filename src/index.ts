@@ -1,31 +1,25 @@
-function greet(name: string, birthYear: number): string {
+const greet = (name: string, birthYear: number) => {
   const age = new Date().getFullYear() - birthYear;
   return `Hello ${name}, you are ${age} years old`;
 }
 
-function isOld(age: number) {
-        return age >= 35
-}
+const isOld = (age: number) => age >= 35
 
-function countOdd(arr: number[]): number{
-    return arr.filter((num) => num % 2 !== 0).length
-}
+const countOdd = (arr: number[]) => arr.filter((num) => num % 2 !== 0).length
 
-function sumEven(arr: number[]): number{
-    return arr
+const sumEven = (arr: number[]) =>
+    arr
     .filter((num) => num % 2 === 0)
-    .reduce((accumulator, current) => accumulator + current/*you can add ", 0" for initial value */ )
-}
+    .reduce((accumulator, current) => accumulator + current
+    /*you can add ", 0" for initial value */ )
 
-function getPersonStreetNo(p: Person){
-    return p.address.streetNo;
-}
 
-function getPersonNameString(p: IPerson){
-    return p.name + ", " + p.birthYear
-}
+const getPersonStreetNo = (p: Person) => p.address.streetNo;
 
-function printThis(p: Person | undefined | null){
+const getPersonNameString = (p: IPerson) => `${p.name}, ${p.birthYear.toString()}`
+
+
+const printThis = (p: Person | undefined | null) => {
     if(!p){
         return "no person supplied"
     }
