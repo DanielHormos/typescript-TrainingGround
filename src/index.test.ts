@@ -1,6 +1,6 @@
 import 'mocha'
 import assert from 'assert'
-import { greet, isOld, countOdd, sumEven} from './index'
+import { greet, isOld, countOdd, sumEven, Address, Person, getPersonStreetNo} from './index'
 import { count } from 'console'
 
 describe('ts tests', () => {
@@ -52,5 +52,20 @@ describe('ts tests', () => {
     const sum = sumEven(num)
 
     assert.equal(sum, 30)
+  })
+  it("gets the street number for a person", () => {
+    const p: Person = {
+        name: "Marcus",
+        birthYear: 1973,
+        address: {
+            street: "strålgatan",
+            streetNo: 23,
+            city: "stockholm"
+        }
+    }
+
+    const streetNo = getPersonStreetNo(p)
+
+    assert.equal(streetNo, 23)
   })
 })

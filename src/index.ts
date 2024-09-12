@@ -13,7 +13,24 @@ function countOdd(arr: number[]): number{
 
 function sumEven(arr: number[]): number{
     return arr
-    .filter((num) => num % 2 == 0)
+    .filter((num) => num % 2 === 0)
     .reduce((accumulator, current) => accumulator + current/*you can add ", 0" for initial value */ )
 }
-export { greet , isOld, countOdd, sumEven};
+
+function getPersonStreetNo(p: Person): number{
+    return p.address.streetNo;
+}
+
+type Address = {
+    street: string
+    streetNo: number
+    city: string
+}
+  
+type Person = {
+    name: string
+    birthYear: number
+    address: Address
+}
+
+export { greet , isOld, countOdd, sumEven, getPersonStreetNo, Address, Person};
