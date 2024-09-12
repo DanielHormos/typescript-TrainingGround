@@ -51,6 +51,6 @@ describe('ts tests', () => {
 
     const sum = sumEven(num)
 
-    assert.equal(sum, 5)
+    assert.equal(sum, 30)
   })
 })
