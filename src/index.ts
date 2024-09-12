@@ -25,6 +25,13 @@ function getPersonNameString(p: IPerson){
     return p.name + ", " + p.birthYear
 }
 
+function printThis(p: Person | undefined | null){
+    if(!p){
+        return "no person supplied"
+    }
+    return p.name
+}
+
 type Address = {
     street: string
     streetNo: number
@@ -62,5 +69,5 @@ interface IPerson{
 
 
 
-export { greet , isOld, countOdd, sumEven, getPersonStreetNo, getPersonNameString,
+export { greet , isOld, countOdd, sumEven, getPersonStreetNo, getPersonNameString, printThis, 
     Address, Person, PersonClass, EmployeeClass, IPerson};

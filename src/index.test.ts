@@ -2,7 +2,7 @@ import 'mocha'
 import assert from 'assert'
 import { greet, isOld, countOdd, sumEven, getPersonNameString,
      Person, getPersonStreetNo, PersonClass, EmployeeClass,
-     IPerson} from './index'
+     IPerson, printThis} from './index'
 import { count } from 'console'
 
 describe('ts tests', () => {
@@ -89,5 +89,12 @@ describe('ts tests', () => {
 
     assert.strictEqual(p1Address, "Marcus, 1972")
     assert.strictEqual(p2Address, "David, 1975")
+  })
+  it("uses union types to allow null", () => {
+    const result1 = printThis(undefined)
+    const result2 = printThis(null)
+
+    assert.strictEqual(result1, "no person supplied")
+    assert.strictEqual(result2, "no person supplied")
   })
 })
