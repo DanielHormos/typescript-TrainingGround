@@ -1,6 +1,8 @@
 import 'mocha'
 import assert from 'assert'
-import { greet, isOld, countOdd, sumEven, Address, Person, getPersonStreetNo} from './index'
+import { greet, isOld, countOdd, sumEven, getPersonNameString,
+     Person, getPersonStreetNo, PersonClass, EmployeeClass,
+     IPerson} from './index'
 import { count } from 'console'
 
 describe('ts tests', () => {
@@ -67,5 +69,25 @@ describe('ts tests', () => {
     const streetNo = getPersonStreetNo(p)
 
     assert.equal(streetNo, 23)
+  })
+  it("using classes", () => {
+    const p = new PersonClass("Daniel", 2000)
+    const e = new EmployeeClass("Jean", 2000)
+
+    e.employeeId = 12345
+
+    assert.strictEqual(p.getName(), "Daniel")
+    assert.strictEqual(e.getName(), "Jean")
+    assert.strictEqual(e.employeeId, 12345)
+  })
+  it("prints an IPerson", () => {
+    const p1: IPerson = {name: "Marcus", birthYear: 1972}
+    const p2 = {name: "David", birthYear: 1975, drummer: true}
+
+    const p1Address = getPersonNameString(p1)
+    const p2Address = getPersonNameString(p2)
+
+    assert.strictEqual(p1Address, "Marcus, 1972")
+    assert.strictEqual(p2Address, "David, 1975")
   })
 })

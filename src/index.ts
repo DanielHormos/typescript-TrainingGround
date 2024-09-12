@@ -21,6 +21,10 @@ function getPersonStreetNo(p: Person){
     return p.address.streetNo;
 }
 
+function getPersonNameString(p: IPerson){
+    return p.name + ", " + p.birthYear
+}
+
 type Address = {
     street: string
     streetNo: number
@@ -33,4 +37,30 @@ type Person = {
     address: Address
 }
 
-export { greet , isOld, countOdd, sumEven, getPersonStreetNo, Address, Person};
+class PersonClass {
+    private name: string = ""
+    birthYear: number = 1970
+
+    constructor(name: string, birthYear: number){
+        this.name = name
+        this.birthYear = birthYear
+    }
+
+    getName() {
+        return this.name
+    }
+}
+
+class EmployeeClass extends PersonClass {
+    employeeId: number = -1
+}
+
+interface IPerson{
+    name: string
+    birthYear: number
+}
+
+
+
+export { greet , isOld, countOdd, sumEven, getPersonStreetNo, getPersonNameString,
+    Address, Person, PersonClass, EmployeeClass, IPerson};
