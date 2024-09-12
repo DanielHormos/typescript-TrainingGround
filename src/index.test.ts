@@ -1,6 +1,6 @@
 import 'mocha'
 import assert from 'assert'
-import { greet, isOld, countOdd} from './index'
+import { greet, isOld, countOdd, sumEven} from './index'
 import { count } from 'console'
 
 describe('ts tests', () => {
@@ -45,5 +45,12 @@ describe('ts tests', () => {
     const numberOfOdds = countOdd(firstFive)
 
     assert.equal(countOdd(firstFive), 3)
+  })
+  it("Sum up even numbers", () => {
+    const num = [1,2,3,4,5,6,7,8,9,10]
+
+    const sum = sumEven(num)
+
+    assert.equal(sum, 5)
   })
 })

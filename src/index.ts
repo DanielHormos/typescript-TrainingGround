@@ -11,4 +11,7 @@ function countOdd(arr: number[]): number{
     return arr.filter((num) => num % 2 !== 0).length
 }
 
-export { greet , isOld, countOdd};
+function sumEven(arr: number[]): number{
+    return arr.filter((num) => num % 2 === 0).length
+}
+export { greet , isOld, countOdd, sumEven};
