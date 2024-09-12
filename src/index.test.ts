@@ -1,6 +1,7 @@
 import 'mocha'
 import assert from 'assert'
-import { greet, isOld } from './index'
+import { greet, isOld, countOdd} from './index'
+import { count } from 'console'
 
 describe('ts tests', () => {
   it("get greeting", () => {
@@ -33,5 +34,16 @@ describe('ts tests', () => {
     assert.strictEqual(typeof name, "string")
     assert.strictEqual(typeof nameImplicit, "string")
     assert.strictEqual(typeof nameImplicit2, "string")
+  })
+  it("arrays are types in ts", () => {
+    const names: string[] = ["Marcus", "Daniel", "Jean"]
+    const firstFive = [1,2,3,4,5]
+    const random = ["array", 2, true]
+  })
+  it("Count odd numbers", () => {
+    const firstFive = [1,2,3,4,5]
+    const numberOfOdds = countOdd(firstFive)
+
+    assert.equal(countOdd(firstFive), 3)
   })
 })
